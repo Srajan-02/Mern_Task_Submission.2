@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Train Animation</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .my-train {
+            width: 300px;
+            height: 100px;
+            position: relative;
+            animation: move 5s infinite;
+        }
+
+        .engine {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .carriage {
+            width: 50px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            left: 100px;
+            top: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .carriage:nth-child(2) {
+            left: 150px;
+        }
+
+        .carriage:nth-child(3) {
+            left: 200px;
+        }
+
+        .carriage:nth-child(4) {
+            left: 250px;
+        }
+
+        @keyframes move {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: 500px;
+            }
+        }
+
+        .start-button,
+        .stop-button {
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .start-button {
+            background-color: green;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .stop-button {
+            background-color: red;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="my-train">
+            <div class="engine"></div>
+            <div class="carriage"></div>
+            <div class="carriage"></div>
+            <div class="carriage"></div>
+        </div>
+    </div>
+    <button class="start-button">Start</button>
+    <button class="stop-button">Stop</button>
+    <script>
+        const startButton = document.querySelector('.start-button');
+        const stopButton = document.querySelector('.stop-button');
+        const train = document.querySelector('.my-train');
+
+        startButton.addEventListener('click', () => {
+            train.classList.add('animated');
+        });
+
+        stopButton.addEventListener('click', () => {
+            train.classList.remove('animated');
+        });
+
+    </script>
+</body>
+
+</html>

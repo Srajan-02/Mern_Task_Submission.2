@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Form Validation</title>
+    <meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+    <meta name="description"
+        content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+    <link rel='stylesheet' href='style-05.css' type='text/css' />
+</head>
+
+<body onload="document.registration.userid.focus();">
+    <h1></h1>
+    <form name='registration' onSubmit="return formValidation();">
+        <ul>
+            <li><label for="Name">Name:</label></li>
+            <li><input type="text" name="Name" size="50" /></li>
+            <li><label for="email">Email:</label></li>
+            <li><input type="text" name="zip" /></li>
+            <li><label for="Website">Website:</label></li>
+            <li><input type="url" name="Website" /></li>
+            <li><label for="desc">Message:</label></li>
+            <li><textarea name="desc" id="desc"></textarea></li>
+            <li><input type="submit" name="submit" value="Submit" /></li>
+        </ul>
+    </form>
+
+    <script>
+        function formValidation() {
+            var uid = document.registration.userid;
+            var passid = document.registration.passid;
+            var uname = document.registration.username;
+            var uadd = document.registration.address;
+            var ucountry = document.registration.country;
+            var uzip = document.registration.zip;
+            var uemail = document.registration.email;
+            var umsex = document.registration.msex;
+            var ufsex = document.registration.fsex; if (userid_validation(uid, 5, 12)) {
+                if (passid_validation(passid, 7, 12)) {
+                    if (allLetter(uname)) {
+                        if (alphanumeric(uadd)) {
+                            if (countryselect(ucountry)) {
+                                if (allnumeric(uzip)) {
+                                    if (ValidateEmail(uemail)) {
+                                        if (validsex(umsex, ufsex)) {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        function allLetter(uname) {
+            var letters = /^[A-Za-z]+$/;
+            if (uname.value.match(letters)) {
+                return true;
+            }
+            else {
+                alert('Username must have alphabet characters only');
+                uname.focus();
+                return false;
+            }
+        }
+        function ValidateEmail(uemail) {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (uemail.value.match(mailformat)) {
+                return true;
+            }
+            else {
+                alert("You have entered an invalid email address!");
+                uemail.focus();
+                return false;
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
